@@ -1,3 +1,7 @@
+.App {
+  touch-action: manipulation;
+}
+
 .header {
   display: flex;
   justify-content: center;
