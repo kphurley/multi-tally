@@ -1,13 +1,13 @@
 {
-  "main.css": "/multi-tally/static/css/main.506ea81e.chunk.css",
-  "main.js": "/multi-tally/static/js/main.921151f0.chunk.js",
-  "main.js.map": "/multi-tally/static/js/main.921151f0.chunk.js.map",
+  "main.css": "/multi-tally/static/css/main.71345f2f.chunk.css",
+  "main.js": "/multi-tally/static/js/main.6042231b.chunk.js",
+  "main.js.map": "/multi-tally/static/js/main.6042231b.chunk.js.map",
   "static/js/1.d845a7b4.chunk.js": "/multi-tally/static/js/1.d845a7b4.chunk.js",
   "static/js/1.d845a7b4.chunk.js.map": "/multi-tally/static/js/1.d845a7b4.chunk.js.map",
   "runtime~main.js": "/multi-tally/static/js/runtime~main.d8d18672.js",
   "runtime~main.js.map": "/multi-tally/static/js/runtime~main.d8d18672.js.map",
-  "static/css/main.506ea81e.chunk.css.map": "/multi-tally/static/css/main.506ea81e.chunk.css.map",
+  "static/css/main.71345f2f.chunk.css.map": "/multi-tally/static/css/main.71345f2f.chunk.css.map",
   "index.html": "/multi-tally/index.html",
-  "precache-manifest.821bd6628904e4f4118ac347cd641f00.js": "/multi-tally/precache-manifest.821bd6628904e4f4118ac347cd641f00.js",
+  "precache-manifest.f30a916ebc7a5d9899bcd316af0f27d4.js": "/multi-tally/precache-manifest.f30a916ebc7a5d9899bcd316af0f27d4.js",
   "service-worker.js": "/multi-tally/service-worker.js"
 }
