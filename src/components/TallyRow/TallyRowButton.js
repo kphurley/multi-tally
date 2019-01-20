@@ -29,9 +29,13 @@ class TallyRowButton extends Component {
   
   render() {
     return (
-      <div className="TallyRow-button" onClick={ this.props.clickHandler }>
+      <button 
+        className="TallyRow-button"
+        onClick={ this.props.clickHandler }
+        type="number"
+      >
         { this.getIcon() }
-      </div>
+      </button>
     );
   }
 }
