@@ -39,11 +39,10 @@ class App extends Component {
     }
   }
 
-  // TODO Dry these out
-  handleDecrement = (row) => {
+  updateRowState = (row, field, operation) => {
     const rowToEdit = _.find(this.state.tallyRows, (tallyRow) => row.id === tallyRow.id);
     const clonedRow = _.clone(this.state.tallyRows[rowToEdit.id]);
-    clonedRow.value = clonedRow.value - clonedRow.increment;
+    clonedRow[field] = operation(clonedRow);
 
     const clonedTallyRows = _.clone(this.state.tallyRows);
     clonedTallyRows[rowToEdit.id] = clonedRow;
@@ -53,17 +52,24 @@ class App extends Component {
     });
   }
 
+  handleDecrement = (row) => {
+    this.updateRowState(row, 'value', (row) => row.value - row.increment);
+  }
+
+  handleDecrementByValue = (row, value) => {
+    this.updateRowState(row, 'value', (row) => row.value - value);
+  }
+
   handleIncrement = (row) => {
-    const rowToEdit = _.find(this.state.tallyRows, (tallyRow) => row.id === tallyRow.id);
-    const clonedRow = _.clone(this.state.tallyRows[rowToEdit.id]);
-    clonedRow.value = clonedRow.value + clonedRow.increment;
+    this.updateRowState(row, 'value', (row) => row.value + row.increment);
+  }
 
-    const clonedTallyRows = _.clone(this.state.tallyRows);
-    clonedTallyRows[rowToEdit.id] = clonedRow;
+  handleIncrementByValue = (row, value) => {
+    this.updateRowState(row, 'value', (row) => row.value + value);
+  }
 
-    this.setState({
-      tallyRows: clonedTallyRows
-    });
+  updateFieldName = (row, name) => {
+    this.updateRowState(row, 'name', (row) => name);
   }
 
   render() {
@@ -76,8 +82,12 @@ class App extends Component {
         </div>
         <TallyRowContainer
           handleDecrement={ this.handleDecrement }
+          handleDecrementByValue={ this.handleDecrementByValue }
           handleIncrement={ this.handleIncrement }
-          rows={ this.state.tallyRows } 
+          handleIncrementByValue={ this.handleIncrementByValue }
+          rows={ this.state.tallyRows }
+          setIncrement={ this.setIncrement }
+          updateFieldName= { this.updateFieldName }
         />
         <div className="footer">
           <div>Icons made by <a href="https://www.flaticon.com/authors/google" title="Google">Google</a> and <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC 3.0 BY</a></div>

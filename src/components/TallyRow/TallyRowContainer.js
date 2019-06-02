@@ -19,6 +19,7 @@ class TallyRowContainer extends Component {
       <TallyRowDisplay
         name={ row.name }
         value={ row.value }
+        updateFieldNameTo={ (name) => this.props.updateFieldName(row, name) }
       />
     );
   }
@@ -26,26 +27,20 @@ class TallyRowContainer extends Component {
   createButton(row, icon, clickHandler) {
     return (
       <TallyRowButton
-        clickHandler={ () => clickHandler(row) }
+        clickHandler={ (value) => clickHandler(row, value) }
         icon={ icon }
       />
     )
   }
 
-
-  // Take the rows and parse them into:
-  // 1. A decrement button
-  // 2. The display
-  // 3. An increment button
-  // Ensuring that each of the three elements is created with the correct click handler
   parseRowsIntoElements() {
     const tallyRowElements = [];
 
     _.forEach(this.props.rows, (row) => {
       tallyRowElements.push(this.createButton(row, 'decrement', this.props.handleDecrement));
-      tallyRowElements.push(this.createButton(row, 'decrementMany', this.props.handleDecrement));
+      tallyRowElements.push(this.createButton(row, 'decrementMany', this.props.handleDecrementByValue));
       tallyRowElements.push(this.createDisplay(row));
-      tallyRowElements.push(this.createButton(row, 'incrementMany', this.props.handleIncrement));
+      tallyRowElements.push(this.createButton(row, 'incrementMany', this.props.handleIncrementByValue));
       tallyRowElements.push(this.createButton(row, 'increment', this.props.handleIncrement));
     });
 
@@ -71,8 +66,11 @@ class TallyRowContainer extends Component {
 
 TallyRowContainer.propTypes = {
   handleDecrement: PropTypes.func,
+  handleDecrementByValue: PropTypes.func,
   handleIncrement: PropTypes.func,
-  rows: PropTypes.object
+  handleIncrementByValue: PropTypes.func,
+  rows: PropTypes.object,
+  updateFieldName: PropTypes.func
 }
 
 export default TallyRowContainer;

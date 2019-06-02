@@ -1,4 +1,5 @@
-import TallyRowContainer from './TallyRow/TallyRowContainer';
+
+import TallyRowContainer from './tallyRow/TallyRowContainer';
 
 export {
   TallyRowContainer
