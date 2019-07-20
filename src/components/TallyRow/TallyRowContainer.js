@@ -36,20 +36,37 @@ class TallyRowContainer extends Component {
   parseRowsIntoElements() {
     const tallyRowElements = [];
 
-    _.forEach(this.props.rows, (row) => {
+    const addRowToElements = (row) => {
       tallyRowElements.push(this.createButton(row, 'decrement', this.props.handleDecrement));
-      tallyRowElements.push(this.createButton(row, 'decrementMany', this.props.handleDecrementByValue));
+
+      if (this.props.options.multiChange) {
+        tallyRowElements.push(this.createButton(row, 'decrementMany', this.props.handleDecrementByValue));
+      }
+
       tallyRowElements.push(this.createDisplay(row));
-      tallyRowElements.push(this.createButton(row, 'incrementMany', this.props.handleIncrementByValue));
+
+      if (this.props.options.multiChange) {
+        tallyRowElements.push(this.createButton(row, 'incrementMany', this.props.handleIncrementByValue));
+      }
+      
       tallyRowElements.push(this.createButton(row, 'increment', this.props.handleIncrement));
-    });
+    }
+
+    _.forEach(this.props.rows, addRowToElements);
 
     return tallyRowElements;
   }
 
   render() {
     return (
-      <div className="TallyRowContainer">
+      <div 
+        className="TallyRowContainer"
+        style={{
+          gridTemplateColumns: this.props.options.multiChange
+            ? "1fr 1fr 1.5fr 1fr 1fr"
+            : "1fr 1.5fr 1fr"
+        }}
+      >
         {
           this.parseRowsIntoElements().map((tallyRowElement, index) => {
             return (
@@ -69,6 +86,7 @@ TallyRowContainer.propTypes = {
   handleDecrementByValue: PropTypes.func,
   handleIncrement: PropTypes.func,
   handleIncrementByValue: PropTypes.func,
+  options: PropTypes.object,
   rows: PropTypes.object,
   updateFieldName: PropTypes.func
 }
