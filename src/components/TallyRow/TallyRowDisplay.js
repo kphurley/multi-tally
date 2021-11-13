@@ -10,19 +10,51 @@ class TallyRowDisplay extends Component {
 
     this.state = {
       input: null,
-      showModal: false
+      showModal: false,
+      type: null
     }
 
     this.inputId = uuidv4();
   }
 
-  handleShow = () => {
-    this.setState({ showModal: true });
+  getModalLabel = () => {
+    switch(this.state.type) {
+      case "name":
+        return "Change Field Name";
+      case "value":
+        return "Change Value";
+      default:
+        return "";
+    }
+  }
+
+  getModalPlaceholder = () => {
+    switch(this.state.type) {
+      case "name":
+        return this.props.name;
+      case "value":
+        return this.props.value;
+      default:
+        return "";
+    }
+  }
+
+  handleShow = (type) => {
+    this.setState({ type, showModal: true });
   }
 
   handleHide = () => {
-    this.props.updateFieldNameTo(this.state.input);
-    this.setState({ showModal: false });
+    switch(this.state.type) {
+      case "name":
+        this.props.updateFieldNameTo(this.state.input);
+        break;
+      case "value":
+        this.props.updateValueTo(parseInt(this.state.input));
+        break;
+      default:
+        break;
+    }
+    this.setState({ input: null, type: null, showModal: false });
   }
 
   updateInput = (event) => {
@@ -30,17 +62,20 @@ class TallyRowDisplay extends Component {
   }
 
   render() {
+    const modalLabel = this.getModalLabel();
+    const modalPlaceholder = this.getModalPlaceholder();
+
     const modal = this.state.showModal ? (
       <SettingsModal>
         <div className="settings-modal-content padding">
           <div className="padding">
-            <label htmlFor={ this.inputId }>Change Field Name</label>
+            <label htmlFor={ this.inputId }>{ modalLabel }</label>
           </div>
           <div className="padding">
             <input 
-              type="text"
+              type={ this.state.type === "value" ? "number" : "text" }
               id={ this.inputId }
-              placeholder={ this.props.name }
+              placeholder={ modalPlaceholder }
               onChange={ this.updateInput }
             />
           </div>
@@ -53,10 +88,10 @@ class TallyRowDisplay extends Component {
 
     return (
       <div>
-        <div className="TallyRow-name" onClick={this.handleShow}>
+        <div className="TallyRow-name" onClick={() => this.handleShow("name")}>
           { this.props.name }
         </div>
-        <div className="TallyRow-value">
+        <div className="TallyRow-value" onClick={() => this.handleShow("value")}>
           { this.props.value }
         </div>
         { modal }
