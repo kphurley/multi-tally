@@ -20,6 +20,7 @@ class TallyRowContainer extends Component {
         name={ row.name }
         value={ row.value }
         updateFieldNameTo={ (name) => this.props.updateFieldName(row, name) }
+        updateValueTo={ (value) => this.props.updateValue(row, value) }
       />
     );
   }
