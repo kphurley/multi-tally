@@ -1,13 +1,20 @@
 {
-  "main.css": "/multi-tally/static/css/main.c3c4f3c1.chunk.css",
-  "main.js": "/multi-tally/static/js/main.a7692a83.chunk.js",
-  "main.js.map": "/multi-tally/static/js/main.a7692a83.chunk.js.map",
-  "static/js/1.7f0d2bcd.chunk.js": "/multi-tally/static/js/1.7f0d2bcd.chunk.js",
-  "static/js/1.7f0d2bcd.chunk.js.map": "/multi-tally/static/js/1.7f0d2bcd.chunk.js.map",
-  "runtime~main.js": "/multi-tally/static/js/runtime~main.d8d18672.js",
-  "runtime~main.js.map": "/multi-tally/static/js/runtime~main.d8d18672.js.map",
-  "static/css/main.c3c4f3c1.chunk.css.map": "/multi-tally/static/css/main.c3c4f3c1.chunk.css.map",
-  "index.html": "/multi-tally/index.html",
-  "precache-manifest.0d14dddc542896c7d44f66ee864f52b0.js": "/multi-tally/precache-manifest.0d14dddc542896c7d44f66ee864f52b0.js",
-  "service-worker.js": "/multi-tally/service-worker.js"
+  "files": {
+    "main.css": "/multi-tally/static/css/main.465609d8.chunk.css",
+    "main.js": "/multi-tally/static/js/main.063c2a13.chunk.js",
+    "main.js.map": "/multi-tally/static/js/main.063c2a13.chunk.js.map",
+    "runtime-main.js": "/multi-tally/static/js/runtime-main.6f71f61b.js",
+    "runtime-main.js.map": "/multi-tally/static/js/runtime-main.6f71f61b.js.map",
+    "static/js/2.914220d7.chunk.js": "/multi-tally/static/js/2.914220d7.chunk.js",
+    "static/js/2.914220d7.chunk.js.map": "/multi-tally/static/js/2.914220d7.chunk.js.map",
+    "index.html": "/multi-tally/index.html",
+    "static/css/main.465609d8.chunk.css.map": "/multi-tally/static/css/main.465609d8.chunk.css.map",
+    "static/js/2.914220d7.chunk.js.LICENSE.txt": "/multi-tally/static/js/2.914220d7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6f71f61b.js",
+    "static/js/2.914220d7.chunk.js",
+    "static/css/main.465609d8.chunk.css",
+    "static/js/main.063c2a13.chunk.js"
+  ]
 }
